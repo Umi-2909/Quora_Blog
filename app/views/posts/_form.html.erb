@@ -1,0 +1,26 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-floating">
+    <%= form.text_field :title, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea" %>
+    <%= form.label :title, for: "floatingTextarea" %>
+  </div>
+  <div class="form-floating">
+    <%= form.text_area :body, class: "form-control", placeholder: "Leave a comment here", id: "floatingTextarea2", style: "height: 100px" %>
+    <%= form.label :body, for: "floatingTextarea2" %>
+  </div>
+  <div>
+    <%= form.file_field :image %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

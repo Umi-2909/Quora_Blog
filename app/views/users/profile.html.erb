@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4">
+      <% if @user.avatar.present? %>
+        <%= image_tag(@user.avatar, style:"width:150px; height: 150px; border-radius:100%") if @user.avatar.attached? %>
+      <% else %>
+        <%= image_tag("default_avatar1/default_avatar.png", style:"width:150px; height: 150px; border-radius:100%") %>
+      <% end %>
+    </div>
+    <div class="col-8">
+      <h1><%= @user.name %></h1>
+      <h6>
+        <%= pluralize(@user.total_post,"post") %> |
+        <%= pluralize(@user.comments.size, "Comment") %>
+        <%= pluralize(@user.views,"view") %>
+      </h6>
+    </div>
+  </div>
+  <div>
+    <div class="col-1">
+    </div>
+    <div>
+      <% if @user.total_post < 1 %>
+        <h2 style="font-size: 24px; font-weight: bold; color: red; padding: 150px 400px;">Thành viên chưa có bài đăng nào</h2>
+      <% else %>
+        <% @posts.sort_by(&:created_at).reverse_each do |post| %>
+          <div class="col-10">
+            <div class="card mt-3">
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to post.title, post %></h5>
+                <p class="card-text"><%= "#{time_ago_in_words(post.created_at)} ago" %></p>
+                <p class="card-text"><%= post.body.to_s.truncate_words(50) %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

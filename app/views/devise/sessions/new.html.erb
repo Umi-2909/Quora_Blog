@@ -1,0 +1,51 @@
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Đăng nhập</p>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                  <form>
+                    <div class="form-outline mb-4">
+                      <%= f.label :email %><br />
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <%= f.label :password %><br />
+                      <%= f.password_field :password, autocomplete: "current-password" %>
+                    </div>
+                    <div class="row mb-4">
+                      <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <%= link_to "Đăng ký",new_user_registration_path%>
+                      </div>
+                    </div>
+                    <div>
+                      <%= link_to "Quên mật khẩu",new_password_path(:user)%>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block mb-4">
+                      <%= f.submit "Đăng nhập", class: "btn btn-primary btn-lg"%>
+                    </button>
+                  </form>
+                <% end %>
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  class="img-fluid" alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

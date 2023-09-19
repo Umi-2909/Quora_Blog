@@ -1,0 +1,26 @@
+<div id="<%= dom_id(post) %>">
+  <p>
+    <p style="font-size: 32px; font-weight: 300;"><%= post.title %></p>
+    <h6 style="padding: 16px 0;">
+      <strong>
+        <% if post.user.avatar.present? %>
+            <%= image_tag(post.user.avatar, style:"width:32px; height: 32px; border-radius:100%") if post.user.avatar.attached? %>
+        <% else %>
+            <%= image_tag("default_avatar1/default_avatar.png", style:"width:32px; height: 32px; border-radius:100%") %>
+        <% end %>
+        <%= link_to post.user.name, user_path(post.user), style:"padding-right: 12px;" %>
+        <strong style="font-size: 16px;"><<%= link_to post.user.email, user_path(post.user), style: 'font-weight: 300; color: black;' %>></p>
+      </strong>
+      <strong>
+          <%= post.created_at.strftime('%H:%M:%S, %d/%m/%Y') %>,
+      </strong>
+          <strong>
+            <%= pluralize(post.views, "view") %>
+          </strong>
+    </h6>
+  </p>
+  <p>
+    <%= post.body %>
+  </p>
+</div>
+

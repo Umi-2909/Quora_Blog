@@ -1,0 +1,17 @@
+<div class="container">
+  <%= render @post %>
+  <%= image_tag url_for(@post.image) if @post.image.attached? %>
+  <div>
+    <button type="button" class="btn btn-info"><%= link_to "Quay về diễn đàn", posts_path, style:'color : white;' %></button>
+    <% if user_signed_in? && current_user == @post.user || user_signed_in? && current_user.admin? %>
+      <button type="button" class="btn btn-warning"><%= link_to "Chỉnh sửa bài viết", edit_post_path(@post), style:'color : white;' %></button>
+      <%= button_to "Xóa bài viết này", @post, method: :delete, data: { confirm: "Are you sure?" },class:'btn btn-danger' %>
+    <% end %>
+  </div>
+</div>
+<div class="content">
+  <%= render 'comments/form', post: @post %>
+  <% @comment.each do |comment| %>
+    <%= render 'comments/comment', post: @post, comment: comment %>
+  <% end %>
+</div>
