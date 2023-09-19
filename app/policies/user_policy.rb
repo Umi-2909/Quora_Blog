@@ -1,11 +1,18 @@
 class UserPolicy < ApplicationPolicy
-  class Scope < Scope
-    def update?
-      user.admin?
-    end
+  attr_reader :user
 
-    def destroy?
-      user.admin?
-    end
+  def initialize(user)
+    @user = user
+  end
+
+  def update?
+    user.admin?
+  end
+
+  def destroy?
+
+    # binding.pry
+
+    user.admin?
   end
 end

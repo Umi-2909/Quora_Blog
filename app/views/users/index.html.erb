@@ -122,7 +122,7 @@
         <p class="fw-normal mb-1"><%= user.created_at.strftime("%d/%m/%Y") %></p>
       </td>
       <td>
-          <%= button_to 'Delete', user_path(user.id),class:'color_status', method: :delete, style:"text-decoration: none;" %>
+          <%= link_to 'Delete', delete_user_path(user.id),class:'color_status',data: { turbo_method: :delete }, style:"text-decoration: none;" %>
       </td>
     </tr>
     <% end -%>

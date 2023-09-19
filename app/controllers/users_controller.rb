@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include Pundit
   before_action :set_user, only: %i[show edit update destroy profile]
-  before_action :authorize_user, only: %i[edit update destroy]
+  # before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @users = User.all
@@ -53,7 +53,9 @@ class UsersController < ApplicationController
   end
 
   def authorize_user
-    authorize @user
+    # binding.pry
+
+    authorize(@user)
   end
 
   def user_params
