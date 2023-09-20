@@ -46,6 +46,15 @@ class UsersController < ApplicationController
     increment_view_count
   end
 
+  def update_admin_status
+    @user = User.find(params[:id])
+    if @user.update_column(:admin, true)
+      redirect_to users_path, notice: "Update Admin Status Successfully"
+    else
+      redirect_to users_path, alert: "Update Admin Status Failed"
+    end
+  end
+
   private
 
   def set_user
