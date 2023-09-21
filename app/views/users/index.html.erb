@@ -95,7 +95,7 @@
 <br/>
 <br/>
 
-<% if current_user.admin? %>
+<% if current_user && current_user.admin? %>
 <h3>Quản lý người dùng</h3>
 <body class="body-user">
   <div class="list-user">

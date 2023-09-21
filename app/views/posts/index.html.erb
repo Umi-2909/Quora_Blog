@@ -20,7 +20,7 @@
             <% else %>
               <%= image_tag("default_avatar1/default_avatar.png", style:"width:32px; height: 32px; border-radius:100%") %>
             <% end %>
-            <%= link_to post.user.name, user_path(post.user), style:"padding-right: 12px;" %>
+            <%= link_to post.user.name, profile_path(post.user), style:"padding-right: 12px;" %>
           </strong>
           <strong>
             <%= post.created_at.strftime('%H:%M:%S, %d/%m/%Y') %>,

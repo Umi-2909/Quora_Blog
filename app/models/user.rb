@@ -10,4 +10,5 @@ class User < ApplicationRecord
     count = posts.count
     return count
   end
+  attribute :admin, :boolean, default: false
 end

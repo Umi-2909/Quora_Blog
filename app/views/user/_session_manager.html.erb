@@ -9,7 +9,7 @@
       <%= current_user.name %>
     </a>
     <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdown">
-      <li><%= link_to "Trang cá nhân",user_path(current_user.id), class:'dropdown-item' %></li>
+      <li><%= link_to "Trang cá nhân",profile_path(current_user.id), class:'dropdown-item' %></li>
       <li><%= link_to "Đăng bài",new_post_path, class:'dropdown-item' %></li>
       <li><%= link_to "Chỉnh sửa thông tin", edit_user_registration_path, class:'dropdown-item' %></li>
       <li><hr class="dropdown-divider"></li>
